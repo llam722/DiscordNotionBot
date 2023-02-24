@@ -1,9 +1,9 @@
-const { Client } = require("@notionhq/client");
+import { Client } from "@notionhq/client";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
 (async () => {
-  const databaseId = "d9824bdc-8445-4327-be8b-5b47500af6ce";
+  const databaseId = process.env.NOTION_DATABASE_ID;
   const response = await notion.databases.query({
     database_id: databaseId,
     // filter: {
@@ -22,12 +22,12 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
     //     },
     //   ],
     // },
-    sorts: [
-      {
-        property: "Last ordered",
-        direction: "ascending",
-      },
-    ],
+    // sorts: [
+    //   {
+    //     property: "Last ordered",
+    //     direction: "ascending",
+    //   },
+    // ],
   });
   console.log(response);
 })();
