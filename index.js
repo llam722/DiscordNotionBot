@@ -1,31 +1,37 @@
-import { Client } from "@notionhq/client"
+import { Client } from "@notionhq/client";
 
-const notion = new Client({ auth: process.env.NOTION_KEY })
+const notion = new Client({ auth: process.env.NOTION_KEY });
 
-const databaseId = process.env.NOTION_DATABASE_ID
+const databaseId = process.env.NOTION_DATABASE_ID;
 
 async function addItem(text) {
-  console.log(databaseId, 'databaseId')
+  // console.log(databaseId, 'databaseId')
   try {
     const response = await notion.pages.create({
       parent: { database_id: databaseId },
       properties: {
         title: {
-          title:[
+          title: [
             {
-              "text": {
-                "content": text
-              }
-            }
-          ]
-        }
+              text: {
+                content: text,
+              },
+            },
+          ],
+        },
+        Status: {
+          status: {
+            name: "In progress",
+          },
+        },
       },
-    })
-    console.log(response)
-    console.log("Success! Entry added.")
+    
+    });
+    console.log(response);
+    console.log("Success! Entry added.");
   } catch (error) {
-    console.error(error.body)
+    console.error(error.body);
   }
 }
 
-addItem("Yurts in Big Sur, California")
+addItem("NY, New York");
