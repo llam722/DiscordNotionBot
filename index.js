@@ -1,4 +1,3 @@
-
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require("./config.json");
 
@@ -32,6 +31,23 @@ async function addItem(text) {
           },
         },
       },
+      children: [
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            rich_text: [
+              {
+                type: "text",
+                text: {
+                  content:
+                    "You made this page using the Notion API. Pretty cool, huh? We hope you enjoy building with us.",
+                },
+              },
+            ],
+          },
+        },
+      ],
     });
     console.log("response", response);
     console.log("Success! Entry added.");
