@@ -1,6 +1,7 @@
 const { Client } = require("@notionhq/client");
+const { NOTION_KEY } = require("../../config.json");
 
-const notion = new Client({ auth: process.env.NOTION_KEY });
+const notion = new Client({ auth: NOTION_KEY });
 
 (async () => {
   const pageId = "59833787-2cf9-4fdf-8782-e53db20768a5";
