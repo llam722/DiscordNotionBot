@@ -22,7 +22,7 @@ async function addItem(text) {
         },
         Status: {
           status: {
-            name: "Done",
+            name: "Ideas",
           },
         },
         Date: {
@@ -41,7 +41,7 @@ async function addItem(text) {
                 type: "text",
                 text: {
                   content:
-                    "You made this page using the Notion API. Pretty cool, huh? We hope you enjoy building with us.",
+                    "You made this page using the Notion API from Discord Messages. Pretty cool, huh? We hope you enjoy building with us.",
                 },
               },
             ],

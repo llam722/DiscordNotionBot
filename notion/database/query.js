@@ -5,17 +5,22 @@ const notion = new Client({ auth: NOTION_KEY });
 
 //function returns an array of pageIds
 (async () => {
-  const databaseId = NOTION_DATABASE_ID;
-  const response = await notion.databases.query({
-    database_id: databaseId,
-  });
-  const data = await pageIdArray(response);
-  console.log(data)
-  return data
+  try {
+    const databaseId = NOTION_DATABASE_ID;
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      property: 'page',
+    });
+    const data = await pageIdArray(response);
+    console.log(data)
+    return data
+  } catch (error) {
+    console.log(error, 'page does not exist in database')
+  }
 })();
 
 
-// helper function to return list of pages
+// helper function to return list of page ids
 const pageIdArray = (response) => {
   const list = [];
   for (let i = 0; i < response.results.length; i++){
@@ -23,3 +28,6 @@ const pageIdArray = (response) => {
   }
   return list;
 }
+
+
+//consider this function to just return the page needed instead of returning page id list.

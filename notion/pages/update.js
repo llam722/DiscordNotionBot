@@ -15,3 +15,4 @@ export const updateData = (async () => {
   });
   console.log(response);
 })();
+
