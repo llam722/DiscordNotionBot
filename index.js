@@ -1,86 +1,57 @@
-const { Client } = require("@notionhq/client");
-const { NOTION_KEY, NOTION_DATABASE_ID } = require("./config.json");
+// Require the necessary discord.js classes
+const fs = require("node:fs");
+const path = require("node:path");
 
-const notion = new Client({ auth: NOTION_KEY });
+const { Client, Events, GatewayIntentBits, Collection } = require("discord.js");
+const { token } = require("./config.json");
 
-const databaseId = NOTION_DATABASE_ID;
+// Create a new client instance
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+});
 
-async function addItem(text) {
-  // console.log(databaseId, 'databaseId')
-  try {
-    const response = await notion.pages.create({
-      parent: { database_id: databaseId },
-      properties: {
-        title: {
-          title: [
-            {
-              text: {
-                content: text,
-              },
-            },
-          ],
-        },
-        Status: {
-          status: {
-            name: "Ideas",
-          },
-        },
-        Date: {
-          date: {
-            start: toIsoString(new Date()),
-          },
-        },
-      },
-      children: [
-        {
-          object: "block",
-          type: "paragraph",
-          paragraph: {
-            rich_text: [
-              {
-                type: "text",
-                text: {
-                  content:
-                    "You made this page using the Notion API from Discord Messages. Pretty cool, huh? We hope you enjoy building with us.",
-                },
-              },
-            ],
-          },
-        },
-      ],
-    });
-    console.log("response", response);
-    console.log("Success! Entry added.");
-  } catch (error) {
-    console.error(error.body);
+client.commands = new Collection();
+
+const commandsPath = path.join(__dirname, "commands");
+const commandFiles = fs
+  .readdirSync(commandsPath)
+  .filter((file) => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+  const filePath = path.join(commandsPath, file);
+  const command = require(filePath);
+  //Set a new item in the Collection with the key as the command name and the value as the exported module
+  if ("data" in command && "execute" in command) {
+    client.commands.set(command.data.name, command);
+  } else {
+    console.log(
+      `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.)`
+    );
   }
 }
 
-addItem(pageInput);
+const eventsPath = path.join(__dirname, "events");
+const eventFiles = fs
+  .readdirSync(eventsPath)
+  .filter((file) => file.endsWith(".js"));
 
-//helper function to convert ISOString into user's local timezone
-function toIsoString(date) {
-  let tzo = -date.getTimezoneOffset(),
-    dif = tzo >= 0 ? "+" : "-",
-    pad = function (num) {
-      return (num < 10 ? "0" : "") + num;
-    };
-
-  return (
-    date.getFullYear() +
-    "-" +
-    pad(date.getMonth() + 1) +
-    "-" +
-    pad(date.getDate()) +
-    "T" +
-    pad(date.getHours()) +
-    ":" +
-    pad(date.getMinutes()) +
-    ":" +
-    pad(date.getSeconds()) +
-    dif +
-    pad(Math.floor(Math.abs(tzo) / 60)) +
-    ":" +
-    pad(Math.abs(tzo) % 60)
-  );
+for (const file of eventFiles) {
+  const filePath = path.join(eventsPath, file);
+  const event = require(filePath);
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
+  }
 }
+
+client.on("messageCreate", (message) => {
+  console.log(`${message.member.user.username}: ${message.content}`);
+});
+
+// Log in to Discord with your client's token
+client.login(token);

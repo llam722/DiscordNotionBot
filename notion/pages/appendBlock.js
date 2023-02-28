@@ -1,5 +1,5 @@
 const { Client } = require("@notionhq/client");
-const { NOTION_KEY } = require("./config.json");
+const { NOTION_KEY } = require("../../config.json");
 
 const notion = new Client({ auth: NOTION_KEY });
 

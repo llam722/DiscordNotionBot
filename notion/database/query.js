@@ -9,32 +9,26 @@ const notion = new Client({ auth: NOTION_KEY });
     const databaseId = NOTION_DATABASE_ID;
     const response = await notion.databases.query({
       database_id: databaseId,
-      property: 'page',
+      property: "page",
     });
-    console.log(response.results[0].properties.Name.title[0].text.content)
-    // console.log(response.results[1].properties.Name.title[0].text.content)
-    // console.log(response.results[2].properties.Name.title[0].text.content)
-    // console.log(response.results[3].properties.Name.title[0].text.content)
-    // console.log(response.results[4].properties.Name.title[0].text.content)
-    // console.log(response.results[5].properties.Name.title[0].text.content)
-    // console.log(response.results[6].properties.Name.title[0].text.content)
+    // console.log(response.results[0].properties.Name.title[0].text.content);
+    console.log(response.results[0]);
+    console.log(response)
     const data = await pageIdArray(response);
-    console.log(data)
-    return data
+    // console.log(data);
+    return data;
   } catch (error) {
-    console.log(error, 'page does not exist in database')
+    console.log(error, "page does not exist in database");
   }
 })();
-
 
 // helper function to return list of page ids
 const pageIdArray = (response) => {
   const list = [];
-  for (let i = 0; i < response.results.length; i++){
+  for (let i = 0; i < response.results.length; i++) {
     list.push(response.results[i].id);
   }
   return list;
-}
-
+};
 
 //consider this function to just return the page needed instead of returning page id list.
