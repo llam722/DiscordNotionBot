@@ -26,8 +26,8 @@ module.exports = {
       // Short means only a single line of text
       .setStyle(TextInputStyle.Short);
 
-    const pagePropertiesInput = new TextInputBuilder()
-      .setCustomId("pagePropertiesInput")
+    const pageContentInput = new TextInputBuilder()
+      .setCustomId("pageContentInput")
       .setLabel("Input properties here")
       // Paragraph means multiple lines of text.
       .setStyle(TextInputStyle.Paragraph);
@@ -38,7 +38,7 @@ module.exports = {
       pageTitleInput
     );
     const secondActionRow = new ActionRowBuilder().addComponents(
-      pagePropertiesInput
+      pageContentInput
     );
 
     // Add inputs to the modal
