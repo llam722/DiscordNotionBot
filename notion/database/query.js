@@ -11,6 +11,13 @@ const notion = new Client({ auth: NOTION_KEY });
       database_id: databaseId,
       property: 'page',
     });
+    console.log(response.results[0].properties.Name.title[0].text.content)
+    // console.log(response.results[1].properties.Name.title[0].text.content)
+    // console.log(response.results[2].properties.Name.title[0].text.content)
+    // console.log(response.results[3].properties.Name.title[0].text.content)
+    // console.log(response.results[4].properties.Name.title[0].text.content)
+    // console.log(response.results[5].properties.Name.title[0].text.content)
+    // console.log(response.results[6].properties.Name.title[0].text.content)
     const data = await pageIdArray(response);
     console.log(data)
     return data
