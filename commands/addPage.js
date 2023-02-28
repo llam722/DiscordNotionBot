@@ -28,15 +28,13 @@ module.exports = {
 
     const pageContentInput = new TextInputBuilder()
       .setCustomId("pageContentInput")
-      .setLabel("Input properties here")
+      .setLabel("Input initial page content here")
       // Paragraph means multiple lines of text.
       .setStyle(TextInputStyle.Paragraph);
 
     // An action row only holds one text input,
     // so you need one action row per text input.
-    const firstActionRow = new ActionRowBuilder().addComponents(
-      pageTitleInput
-    );
+    const firstActionRow = new ActionRowBuilder().addComponents(pageTitleInput);
     const secondActionRow = new ActionRowBuilder().addComponents(
       pageContentInput
     );
