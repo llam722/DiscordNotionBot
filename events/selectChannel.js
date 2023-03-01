@@ -5,11 +5,10 @@ const {
 } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require("../config.json");
-const { data } = require("../commands/addPage");
 
 const notion = new Client({ auth: NOTION_KEY });
 
-module.exports = {
+module.exports.pageIdArray = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
