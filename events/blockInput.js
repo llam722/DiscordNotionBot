@@ -8,6 +8,7 @@ module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     if (!interaction.isModalSubmit()) return;
+    //runs query on database
     const pageList = await query();
     console.log(pageList, "what the");
 

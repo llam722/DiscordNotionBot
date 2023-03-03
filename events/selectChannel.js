@@ -46,7 +46,7 @@ module.exports = {
 
     if (interaction.commandName === "test") {
       const databasePages = await query;
-      console.log(databasePages);
+      // console.log(databasePages);
 
       const row = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
