@@ -3,6 +3,7 @@ const { Client } = require("@notionhq/client");
 const { NOTION_KEY } = require("../config.json");
 const notion = new Client({ auth: NOTION_KEY });
 const { query } = require("../notion/database/query");
+const selected = require('./channelSelector')
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -11,6 +12,8 @@ module.exports = {
     //runs query on database
     const pageList = await query();
     console.log(pageList, "what the");
+    const selected = await selected.execute()
+    console.log(selected)
 
     if (interaction.customId === "blockInput") {
       await interaction.reply({

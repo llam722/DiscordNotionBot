@@ -18,5 +18,6 @@ module.exports = {
         components: [],
       });
     }
+    return selected;
   },
 };
