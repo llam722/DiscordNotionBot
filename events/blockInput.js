@@ -2,12 +2,14 @@ const { Events } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY } = require("../config.json");
 const notion = new Client({ auth: NOTION_KEY });
-
+const { query } = require("../notion/database/query");
 
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     if (!interaction.isModalSubmit()) return;
+    const pageList = await query();
+    console.log(pageList, "what the");
 
     if (interaction.customId === "blockInput") {
       await interaction.reply({
@@ -54,7 +56,7 @@ module.exports = {
           },
         ],
       });
-      console.log(response, "block content added to page!");
-    };
+      // console.log(response, "block content added to page!");
+    }
   },
 };

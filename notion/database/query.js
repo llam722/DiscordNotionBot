@@ -4,7 +4,7 @@ const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
 const notion = new Client({ auth: NOTION_KEY });
 
 //function returns an array of pageIds
-(async () => {
+const query = (async () => {
   try {
     const databaseId = NOTION_DATABASE_ID;
     const response = await notion.databases.query({
@@ -13,14 +13,14 @@ const notion = new Client({ auth: NOTION_KEY });
     });
     // console.log(response.results[0].properties.Name.title[0].text.content);
     console.log(response.results[0]);
-    console.log(response)
+    console.log(response);
     const data = await pageIdArray(response);
     // console.log(data);
     return data;
   } catch (error) {
     console.log(error, "page does not exist in database");
   }
-})();
+});
 
 // helper function to return list of page ids
 const pageIdArray = (response) => {
@@ -32,3 +32,4 @@ const pageIdArray = (response) => {
 };
 
 //consider this function to just return the page needed instead of returning page id list.
+module.exports = { query };
