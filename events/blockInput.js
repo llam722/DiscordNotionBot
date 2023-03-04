@@ -3,18 +3,11 @@ const { Client } = require("@notionhq/client");
 const { NOTION_KEY } = require("../config.json");
 const notion = new Client({ auth: NOTION_KEY });
 const { query } = require("../notion/database/query");
-const selected = require('./channelSelector')
+const { pageId } = require("../tempPageId");
 
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
-    if (!interaction.isModalSubmit()) return;
-    //runs query on database
-    const pageList = await query();
-    console.log(pageList, "what the");
-    const selected = await selected.execute()
-    console.log(selected)
-
     if (interaction.customId === "blockInput") {
       await interaction.reply({
         content: "Your submission was received successfully!",
@@ -29,7 +22,8 @@ module.exports = {
     }
 
     async function addItem(blockHeader, blockContent) {
-      const blockId = "5f55ed6f-8af6-478e-9257-180878e8e2fe";
+      const blockId = pageId[0];
+      console.log(blockId, "blockId");
       const response = await notion.blocks.children.append({
         block_id: blockId,
         children: [
@@ -60,7 +54,9 @@ module.exports = {
           },
         ],
       });
-      // console.log(response, "block content added to page!");
+      console.log(response, "block content added to page!");
+      pageId.shift();
+      console.log(pageId);
     }
   },
 };
