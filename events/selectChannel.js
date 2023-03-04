@@ -20,11 +20,7 @@ module.exports = {
           database_id: databaseId,
           property: "page",
         });
-        // console.log(response.results[0].properties.Name.title[0].text.content);
-        // console.log(response.results[0]);
         const data = await pageIdArray(response);
-        // databasePages = data;
-        // console.log(data);
         return data;
       } catch (error) {
         console.log(error, "page does not exist in database");
@@ -46,7 +42,6 @@ module.exports = {
 
     if (interaction.commandName === "test") {
       const databasePages = await query;
-      // console.log(databasePages);
 
       const row = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
@@ -59,7 +54,5 @@ module.exports = {
         components: [row],
       });
     }
-
-    
   },
 };

@@ -11,8 +11,6 @@ const query = (async () => {
       database_id: databaseId,
       property: "page",
     });
-    // console.log(response.results[0].properties.Name.title[0].text.content);
-    console.log(response.results[0]);
     console.log(response);
     const data = await pageIdArray(response);
     // console.log(data);

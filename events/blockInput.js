@@ -44,9 +44,9 @@ module.exports = {
                 {
                   text: {
                     content: blockContent,
-                    link: {
-                      url: "https://en.wikipedia.org/wiki/Lacinato_kale",
-                    },
+                    // link: {
+                    //   url: "https://en.wikipedia.org/wiki/Lacinato_kale",
+                    // },
                   },
                 },
               ],

@@ -7,11 +7,10 @@ module.exports = {
     if (!interaction.isStringSelectMenu()) return;
 
     const selected = interaction.values[0];
-    // console.log(selected)
 
     if (interaction.customId === "select") {
       await interaction.update({
-        content: "Page was selected!",
+        content: "Page selected successfully!",
         components: [],
       });
     }
