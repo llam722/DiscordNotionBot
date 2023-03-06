@@ -40,7 +40,7 @@ module.exports = {
       return list;
     };
 
-    if (interaction.commandName === "test") {
+    if (interaction.commandName === "selectpage") {
       const databasePages = await query;
 
       const row = new ActionRowBuilder().addComponents(
@@ -54,5 +54,7 @@ module.exports = {
         components: [row],
       });
     }
+
+    
   },
 };
