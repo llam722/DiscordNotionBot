@@ -1,18 +1,19 @@
 const { Client } = require("@notionhq/client");
-const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
+const { NOTION_KEY } = require("../../config.json");
 
 const notion = new Client({ auth: NOTION_KEY });
 
-export const updateData = (async () => {
-  const pageId = "59833787-2cf9-4fdf-8782-e53db20768a5";
+const updateData = (async () => {
+  const pageId = "5f55ed6f-8af6-478e-9257-180878e8e2fe";
   const response = await notion.pages.update({
     page_id: pageId,
     properties: {
-      "In stock": {
-        checkbox: true,
+      Status: {
+        status: {
+          name: "Done",
+        },
       },
     },
   });
   console.log(response);
 })();
-
