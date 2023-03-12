@@ -23,6 +23,7 @@ module.exports = {
 
     async function addItem(blockHeader, blockContent) {
       const blockId = pageId[0];
+      if (!blockId) return await interaction.reply("No page selected. Please select a page using \"/selectpage\" before using this command.")
       console.log(blockId, "blockId");
       const response = await notion.blocks.children.append({
         block_id: blockId,
