@@ -14,6 +14,7 @@ module.exports = {
         components: [],
       });
     }
+    //adds selected value into the array for temporary storage
     pageId.push(selected);
     console.log(pageId);
     return selected;
