@@ -5,7 +5,7 @@ module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     if (!interaction.isStringSelectMenu()) return;
-
+    //assigns selected to the chosen value in menu
     const selected = interaction.values[0];
 
     if (interaction.customId === "select") {
