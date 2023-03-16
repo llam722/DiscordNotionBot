@@ -7,7 +7,6 @@
 <h4>
 In order to ensure smooth setup, follow the steps below from the Notion documentation to allow database access for this integration:
 </h4>
-<br/>
 
 <ol>
 <li>Go to the database page in your workspace.</li>
