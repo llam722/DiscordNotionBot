@@ -24,3 +24,5 @@ See attached image from Notion docs.
 <img src='./databaseId.png'></img>
 
 Save this database ID as the value for the key, NOTION_DATABASE_ID in config.json to be exported to other files.
+
+You will also need the clientId in order to access the Discord channels that you are a moderator of. You can obtain this by going to the <a href='https://discord.com/developers/applications'>Discord Developer Console<a>.
