@@ -18,6 +18,7 @@ module.exports = {
       const blockContent =
         interaction.fields.getTextInputValue("blockContentInput");
       console.log({ blockHeader, blockContent });
+      //appends the new content to the current page after grabbing the fields from the interaction above
       addItem(blockHeader, blockContent);
     }
 
