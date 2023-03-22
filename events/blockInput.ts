@@ -1,7 +1,7 @@
-const { Events } = require("discord.js");
-const { Client } = require("@notionhq/client");
-const { NOTION_KEY } = require("../config.json");
-const notion = new Client({ auth: NOTION_KEY });
+// const { Events } = require("discord.js");
+// const { Client } = require("@notionhq/client");
+// const { NOTION_KEY } = require("../config.json");
+// const notion = new Client({ auth: NOTION_KEY });
 const { pageId } = require("../tempPageId");
 
 module.exports = {

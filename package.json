@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +22,10 @@
     "discord.js": "^14.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.35.0"
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.35.0",
+    "prettier": "^2.8.6",
+    "typescript": "^5.0.2"
   }
 }

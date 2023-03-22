@@ -1,7 +1,7 @@
-const { Client } = require("@notionhq/client");
-const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
+// const { Client } = require("@notionhq/client");
+// const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
 
-const notion = new Client({ auth: NOTION_KEY });
+// const notion = new Client({ auth: NOTION_KEY });
 
 //function returns an array of pageIds
 const query = (async () => {
@@ -11,7 +11,7 @@ const query = (async () => {
       database_id: databaseId,
       property: "page",
     });
-    console.log(response);
+    // console.log(response);
     const data = await pageIdArray(response);
     // console.log(data);
     return data;
@@ -21,7 +21,7 @@ const query = (async () => {
 });
 
 // helper function to return list of page ids
-const pageIdArray = (response) => {
+const pageIdArray = (response: { results: string | any[]; }) => {
   const list = [];
   for (let i = 0; i < response.results.length; i++) {
     list.push(response.results[i].id);
