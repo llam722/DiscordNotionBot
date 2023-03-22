@@ -19,7 +19,8 @@
   "homepage": "https://github.com/llam722/DiscordNotion#readme",
   "dependencies": {
     "@notionhq/client": "^1.0.1",
-    "discord.js": "^14.7.1"
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.15.5",
