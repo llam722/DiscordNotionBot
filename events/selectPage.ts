@@ -8,25 +8,13 @@ const { NOTION_KEY, NOTION_DATABASE_ID } = require("../config.json");
 
 const notion = new Client({ auth: NOTION_KEY });
 
-module.exports = {
+export default {
   name: Events.InteractionCreate,
-  async execute(interaction: { isChatInputCommand: () => any; commandName: string; reply: (arg0: { content: string; components: any[]; }) => any; }) {
+  async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
     const query = (async () => {
       try {
-         const pageIdArray = (response: { results: string | any[]; }) => {
-      const list = [];
-      for (let i = 0; i < response.results.length; i++) {
-        list.push({
-          label: response.results[i].properties.Name.title[0].text.content,
-          description: response.results[i].url,
-          value: response.results[i].id,
-        });
-      }
-      return list;
-         };
-        
         const databaseId = NOTION_DATABASE_ID;
         const response = await notion.databases.query({
           database_id: databaseId,
@@ -40,7 +28,17 @@ module.exports = {
     })();
 
     // helper function to return list of page ids
-   
+    const pageIdArray = (response) => {
+      const list = [];
+      for (let i = 0; i < response.results.length; i++) {
+        list.push({
+          label: response.results[i].properties.Name.title[0].text.content,
+          description: response.results[i].url,
+          value: response.results[i].id,
+        });
+      }
+      return list;
+    };
 
     if (interaction.commandName === "selectpage") {
       const databasePages = await query;

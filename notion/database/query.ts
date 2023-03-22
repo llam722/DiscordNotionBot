@@ -1,7 +1,7 @@
-// const { Client } = require("@notionhq/client");
-// const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
+const { Client } = require("@notionhq/client");
+const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
 
-// const notion = new Client({ auth: NOTION_KEY });
+const notion = new Client({ auth: NOTION_KEY });
 
 //function returns an array of pageIds
 const query = (async () => {
@@ -12,7 +12,7 @@ const query = (async () => {
       property: "page",
     });
     // console.log(response);
-    const data = await pageIdArray(response);
+    const data = pageIdArray(response);
     // console.log(data);
     return data;
   } catch (error) {
@@ -30,4 +30,4 @@ const pageIdArray = (response: { results: string | any[]; }) => {
 };
 
 //consider this function to just return the page needed instead of returning page id list.
-module.exports = { query };
+export default { query };
