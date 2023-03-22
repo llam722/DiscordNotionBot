@@ -2,7 +2,6 @@ const { Events } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY } = require("../config.json");
 const notion = new Client({ auth: NOTION_KEY });
-const { query } = require("../notion/database/query");
 const { pageId } = require("../tempPageId");
 
 module.exports = {
@@ -24,7 +23,10 @@ module.exports = {
 
     async function addItem(blockHeader, blockContent) {
       const blockId = pageId[0];
-      if (!blockId) return await interaction.reply("No page selected. Please select a page using \"/selectpage\" before using this command.")
+      if (!blockId)
+        return await interaction.reply(
+          'No page selected. Please select a page using "/selectpage" before using this command.'
+        );
       console.log(blockId, "blockId");
       const response = await notion.blocks.children.append({
         block_id: blockId,
