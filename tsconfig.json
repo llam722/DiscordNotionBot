@@ -12,7 +12,7 @@
     "lib": ["ES2019"],
 
     // Emit location
-    "outDir": "build",
+    "outDir": "./dist",
 
     // Emit sourcemaps
     "declarationMap": true,

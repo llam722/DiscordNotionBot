@@ -4,7 +4,7 @@ const { NOTION_KEY } = require("../config.json");
 const notion = new Client({ auth: NOTION_KEY });
 const { pageId } = require("../tempPageId");
 
-export default {
+module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
     if (interaction.customId === "blockInput") {
