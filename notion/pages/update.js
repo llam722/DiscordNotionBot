@@ -1,7 +1,8 @@
 const { Client } = require("@notionhq/client");
-const { NOTION_KEY } = require("../../config.json");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const notion = new Client({ auth: NOTION_KEY });
+const notion = new Client({ auth: process.env.NOTION_KEY });
 
 const updateData = (async () => {
   const pageId = "5f55ed6f-8af6-478e-9257-180878e8e2fe";
