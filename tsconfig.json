@@ -13,6 +13,7 @@
 
     // Emit location
     "outDir": "./dist",
+    "rootDir": "./",
 
     // Emit sourcemaps
     "declarationMap": true,
@@ -27,6 +28,7 @@
 
     // Allow import package.json
     "resolveJsonModule": true,
+    "moduleDetection": "force",
 
     // Linter style rules
     "noUnusedLocals": false, // Disabled because we use eslint for this.
@@ -37,6 +39,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "forceConsistentCasingInFileNames": true
   },
-
-  "include": ["./**/*", "test/**/*"]
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
