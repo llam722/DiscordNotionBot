@@ -20,7 +20,7 @@ client.commands = new Collection();
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
-  .filter((file) => file.endsWith(".js"));
+  .filter((file: string) => file.endsWith(".js"));
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
@@ -38,7 +38,7 @@ for (const file of commandFiles) {
 const eventsPath = path.join(__dirname, "events");
 const eventFiles = fs
   .readdirSync(eventsPath)
-  .filter((file: string) => file.endsWith(".ts"));
+  .filter((file: string) => file.endsWith(".js"));
 
 for (const file of eventFiles) {
   const filePath = path.join(eventsPath, file);
@@ -50,7 +50,7 @@ for (const file of eventFiles) {
   }
 }
 
-client.on("messageCreate", (message: { member: { user: { username: string } }, content: string }) => {
+client.on("messageCreate", (message: { member: { user: { username: any; }; }; content: any; }) => {
   console.log(`${message.member.user.username}: ${message.content}`);
 });
 

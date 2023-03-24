@@ -5,7 +5,7 @@
 
     // Node LTS Fermium (14.x) has mostly complete support for ES2019 (as reported by https://node.green/)
     "target": "ES2019",
-    "module": "commonjs",
+    "module": "CommonJS",
     // "esModuleInterop": true,
 
     // Overrides default in order to remove "dom" because this package shouldn't assume the presence of browser APIs
@@ -39,6 +39,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*.ts", "test/**/*", "src/events/selectPage.js", "src/events/selectPage.js"],
   "exclude": ["node_modules", "dist"]
 }

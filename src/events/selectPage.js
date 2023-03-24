@@ -1,5 +1,3 @@
-import { Url } from "url";
-
 const {
   ActionRowBuilder,
   Events,
@@ -11,19 +9,13 @@ dotenv.config();
 
 const notion = new Client({ auth: process.env["NOTION_KEY"] });
 
-type Data = {
-  label?: string,
-  description?: string,
-  value?: Url
-}
-
 module.exports = {
   name: Events.InteractionCreate,
-  async execute(interaction: any) {
+  async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
     
     // helper function to return list of page ids
-    const pageIdArray = (response: any) => {
+    const pageIdArray = (response) => {
       const list = [];
       for (let i = 0; i < response.results.length; i++) {
         list.push({
@@ -34,8 +26,9 @@ module.exports = {
       }
       return list;
     };
+
     
-    const query = (async (): Promise<Data[] | void> => {
+    const query = (async () => {
       try {
         const databaseId = process.env["NOTION_DATABASE_ID"];
         const response = await notion.databases.query({
@@ -43,7 +36,7 @@ module.exports = {
           property: "page",
         });
         const data = await pageIdArray(response);
-        return data;
+        if(data) return data;
       } catch (error) {
         console.log(error, "page does not exist in database");
       }
