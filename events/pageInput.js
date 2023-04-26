@@ -9,6 +9,7 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 
 module.exports = {
   name: Events.InteractionCreate,
+  //adds a new page with text content
   async execute(interaction) {
     if (!interaction.isModalSubmit()) return;
 

@@ -4,7 +4,7 @@ dotenv.config();
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
 const updateData = (async () => {
-  const pageId = "83af0783-30f8-4e89-a853-611cc2fe493e";
+  const pageId = "e71d8ae1-7f95-44d8-8c1e-287e626c54ad";
   const response = await notion.pages.update({
     page_id: pageId,
     properties: {
