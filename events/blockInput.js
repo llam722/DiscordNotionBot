@@ -1,9 +1,11 @@
 const { Events } = require("discord.js");
-const { Client } = require("@notionhq/client");
-const dotenv = require("dotenv");
-dotenv.config();
+const { Client } = require("@notionhq/client"); \
+const { NOTION_KEY } = require('../config.json')
 
-const notion = new Client({ auth: process.env.NOTION_KEY });
+// const dotenv = require("dotenv");
+// dotenv.config();
+
+const notion = new Client({ auth: NOTION_KEY });
 const { pageId } = require("../tempPageId");
 
 module.exports = {
