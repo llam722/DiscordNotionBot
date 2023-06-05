@@ -2,9 +2,11 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+const { token } = require('./config.json')
+
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
-const dotenv = require("dotenv");
-dotenv.config();
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 // Create a new client instance
 const client = new Client({
@@ -55,4 +57,4 @@ client.on("messageCreate", (message) => {
 });
 
 // Log in to Discord with your client's token
-client.login(process.env.token);
+client.login(token);
