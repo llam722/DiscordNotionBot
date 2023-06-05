@@ -13,7 +13,7 @@ module.exports = {
       await interaction.reply({
         content: "Your submission was received successfully!",
       });
-
+      //obtains header and content input from modal
       const blockHeader =
         interaction.fields.getTextInputValue("blockHeaderInput");
       const blockContent =
