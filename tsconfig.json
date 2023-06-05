@@ -39,6 +39,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts", "test/**/*", "src/events/selectPage.js", "src/events/selectPage.js"],
+  "include": ["src/**/*.ts", "test/**/*", "src/events/selectPage.ts", "src/events/selectPage.ts"],
   "exclude": ["node_modules", "dist"]
 }

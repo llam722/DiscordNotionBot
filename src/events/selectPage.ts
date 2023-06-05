@@ -1,4 +1,7 @@
+import { ActionRowBuilder, ChatInputCommandInteraction } from "discord.js";
+
 const {
+  ChatInputCommandInteraction
   ActionRowBuilder,
   Events,
   StringSelectMenuBuilder,
@@ -9,15 +12,21 @@ const { NOTION_KEY, NOTION_DATABASE_ID } = require('../config.json')
 // const dotenv = require("dotenv");
 // dotenv.config();
 
-const notion = new Client({ auth: process.env["NOTION_KEY"] });
+const notion = new Client({ auth: NOTION_KEY });
+
+interface List {
+  label: string,
+  description: string,
+  value: string
+}
 
 module.exports = {
   name: Events.InteractionCreate,
-  async execute(interaction) {
+  async execute(interaction: ChatInputCommandInteraction) {
     if (!interaction.isChatInputCommand()) return;
     
     // helper function to return list of page ids
-    const pageIdArray = (response) => {
+    const pageIdArray = (response: { results: string | any[]; }): List[] => {
       const list = [];
       for (let i = 0; i < response.results.length; i++) {
         list.push({
@@ -30,9 +39,9 @@ module.exports = {
     };
 
     
-    const query = (async () => {
+    const query = (async (): Promise<List[] | void> => {
       try {
-        const databaseId = process.env["NOTION_DATABASE_ID"];
+        const databaseId: string = NOTION_DATABASE_ID;
         const response = await notion.databases.query({
           database_id: databaseId,
           property: "page",
@@ -46,9 +55,9 @@ module.exports = {
 
 
     if (interaction.commandName === "selectpage") {
-      const databasePages = await [query];
+      const databasePages = [query];
 
-      const row = new ActionRowBuilder().addComponents(
+      const row: ActionRowBuilder = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
