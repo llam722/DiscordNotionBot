@@ -1,7 +1,6 @@
-import { ActionRowBuilder, ChatInputCommandInteraction } from "discord.js";
+import { Interaction, ModalActionRowComponentBuilder } from "discord.js";
 
 const {
-  ChatInputCommandInteraction
   ActionRowBuilder,
   Events,
   StringSelectMenuBuilder,
@@ -22,7 +21,7 @@ interface List {
 
 module.exports = {
   name: Events.InteractionCreate,
-  async execute(interaction: ChatInputCommandInteraction) {
+  async execute(interaction: Interaction) {
     if (!interaction.isChatInputCommand()) return;
     
     // helper function to return list of page ids
@@ -57,7 +56,7 @@ module.exports = {
     if (interaction.commandName === "selectpage") {
       const databasePages = [query];
 
-      const row: ActionRowBuilder = new ActionRowBuilder().addComponents(
+      const row = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
