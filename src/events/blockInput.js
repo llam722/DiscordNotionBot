@@ -1,18 +1,12 @@
 //@ts-nocheck
 const { Events } = require("discord.js");
 const { Client } = require("@notionhq/client");
-<<<<<<< HEAD:src/events/blockInput.js
-const dotenv = require("dotenv")
-dotenv.config()
-const notion = new Client({ auth: process.env["NOTION_KEY"] });
-=======
 const { NOTION_KEY } = require('../config.json')
 
 // const dotenv = require("dotenv");
 // dotenv.config();
 
 const notion = new Client({ auth: NOTION_KEY });
->>>>>>> main:events/blockInput.js
 const { pageId } = require("../tempPageId");
 
 module.exports = {

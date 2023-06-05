@@ -1,11 +1,5 @@
 const { Events } = require("discord.js");
 const { Client } = require("@notionhq/client");
-<<<<<<< HEAD:src/events/pageInput.js
-const dotenv = require("dotenv")
-dotenv.config()
-
-const notion = new Client({ auth: process.env.NOTION_KEY });
-=======
 
 const { NOTION_KEY, NOTION_DATABASE_ID } = require("../config.json");
 
@@ -13,7 +7,6 @@ const { NOTION_KEY, NOTION_DATABASE_ID } = require("../config.json");
 // dotenv.config();
 
 const notion = new Client({ auth: NOTION_KEY });
->>>>>>> main:events/pageInput.js
 
 const databaseId = process.env.NOTION_DATABASE_ID;
 

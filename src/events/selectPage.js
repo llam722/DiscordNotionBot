@@ -4,15 +4,10 @@ const {
   StringSelectMenuBuilder,
 } = require("discord.js");
 const { Client } = require("@notionhq/client");
-<<<<<<< HEAD:src/events/selectPage.js
-const dotenv = require('dotenv')
-dotenv.config();
-=======
 const { NOTION_KEY, NOTION_DATABASE_ID } = require('../config.json')
 
 // const dotenv = require("dotenv");
 // dotenv.config();
->>>>>>> main:events/selectPage.js
 
 const notion = new Client({ auth: process.env["NOTION_KEY"] });
 
