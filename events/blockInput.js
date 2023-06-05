@@ -1,5 +1,5 @@
 const { Events } = require("discord.js");
-const { Client } = require("@notionhq/client"); \
+const { Client } = require("@notionhq/client");
 const { NOTION_KEY } = require('../config.json')
 
 // const dotenv = require("dotenv");
