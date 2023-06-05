@@ -1,12 +1,20 @@
+<<<<<<< HEAD:src/database/query.js
 // const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require("../../config.json");
 
 // const notion = new Client({ auth: NOTION_KEY });
+=======
+const { Client } = require("@notionhq/client");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const notion = new Client({ auth: process.env.NOTION_KEY });
+>>>>>>> main:notion/database/query.js
 
 //function returns an array of pageIds
 const query = (async () => {
   try {
-    const databaseId = NOTION_DATABASE_ID;
+    const databaseId = process.env.NOTION_DATABASE_ID;
     const response = await notion.databases.query({
       database_id: databaseId,
       property: "page",

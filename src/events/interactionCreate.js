@@ -6,8 +6,6 @@ module.exports = {
     if (!interaction.isChatInputCommand()) return;
 
     if (interaction.commandName === "ping") {
-      // const message = await interaction.fetchReply();
-      // console.log(message);
       const sent = await interaction.reply({
         content: "Pinging...",
         fetchReply: true,

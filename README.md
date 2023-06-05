@@ -16,13 +16,16 @@ In order to ensure smooth setup, follow the steps below from the Notion document
 </ol>
 
 
-Create a file named config.json with an empty object and obtain your database ID to allow updating of the correct database. 
+Create a file named config.json with an empty object and obtain your database ID to allow updating of the correct database. <br> 
+<b>OR</b>
+Create a .env file in the root of your project to be imported and configured.
+
 <br>Click the <b>Share</b> icon then select <b>Copy Link</b> to extract the URL, where we will get the database ID from. 
 <br>
 See attached image from Notion docs.
 
 <img src='./databaseId.png'></img>
 
-Save this database ID as the value for the key, NOTION_DATABASE_ID in config.json to be exported to other files.
+Save this database ID as the value for the key, (NOTION_DATABASE_ID if using config.json) to be exported to other files.
 
 You will also need the clientId in order to access the Discord channels that you are a moderator of. You can obtain this by going to the <a href='https://discord.com/developers/applications'>Discord Developer Console<a>.

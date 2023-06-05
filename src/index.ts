@@ -2,9 +2,16 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+const { token } = require('./config.json')
+
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
+<<<<<<< HEAD:src/index.ts
 const dotenv = require("dotenv")
 dotenv.config()
+=======
+// const dotenv = require("dotenv");
+// dotenv.config();
+>>>>>>> main:index.js
 
 // Create a new client instance
 const client = new Client({

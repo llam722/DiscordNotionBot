@@ -1,4 +1,6 @@
 import { Client } from '@notionhq/client'
+const dotenv = require("dotenv");
+dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 

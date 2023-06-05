@@ -1,6 +1,11 @@
 const { REST, Routes } = require("discord.js");
+<<<<<<< HEAD:src/deploy-commands.js
 const dotenv = require("dotenv")
 dotenv.config()
+=======
+const dotenv = require("dotenv");
+dotenv.config();
+>>>>>>> main:deploy-commands.js
 const fs = require("node:fs");
 
 const commands = [];

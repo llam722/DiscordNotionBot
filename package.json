@@ -2,10 +2,17 @@
   "name": "discord-notion",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts"
+=======
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> main
   },
   "repository": {
     "type": "git",
@@ -20,8 +27,14 @@
   "homepage": "https://github.com/llam722/DiscordNotion#readme",
   "dependencies": {
     "@notionhq/client": "^1.0.1",
+<<<<<<< HEAD
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3"
+=======
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "node": "^18.12.1"
+>>>>>>> main
   },
   "devDependencies": {
     "@types/node": "^18.15.5",
