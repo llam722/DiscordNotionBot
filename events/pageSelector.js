@@ -24,7 +24,7 @@ module.exports = {
         const data = response.results.filter(page => page.id === selected)
         const pageName = data[0].properties.Name.title[0].text.content;
         console.log(pageName, 'pageName')
-        return data;
+        return pageName;
       } catch (error) {
         console.log(error, "page does not exist in database");
       }
