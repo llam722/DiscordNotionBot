@@ -29,6 +29,8 @@ module.exports = {
         .setCustomId("blockHeaderInput")
         // The label is the prompt the user sees for this input
         .setLabel("Input heading here")
+        //Makes this field optional if requested
+        .setRequired(false)
         // Short means only a single line of text
         .setStyle(TextInputStyle.Short);
 
