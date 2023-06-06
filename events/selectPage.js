@@ -51,15 +51,7 @@ module.exports = {
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
-          // .addOptions(...databasePages)
-          .addOptions(
-            databasePages.map((page) => {
-              new StringSelectMenuOptionBuilder()
-                .setLabel(page.label)
-                .setDescription(page.description)
-                .setValue(page.value)
-            })
-          )
+          .addOptions(...databasePages)
       );
 
       await interaction.reply({
