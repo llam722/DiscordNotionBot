@@ -21,17 +21,13 @@ module.exports = {
           database_id: databaseId,
           property: "page",
         });
-        const data = pageNameFinder(response);
+        const data = response.filter((page) => selected === page.database_id)
         console.log(data, 'data')
         return data;
       } catch (error) {
         console.log(error, "page does not exist in database");
       }
     })();
-
-    const pageNameFinder = (pages) => {
-      pages.filter((page) => page.databaseId === selected)
-    }
 
 
 
