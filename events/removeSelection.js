@@ -1,7 +1,5 @@
-const {
-  Events,
-} = require("discord.js");
-const { pageId } = require('../tempPageId')
+const { Events } = require("discord.js");
+const { pageId } = require("../tempPageId");
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -10,6 +8,10 @@ module.exports = {
 
     if (interaction.commandName === "selectpage") {
       pageId.pop();
+      await interaction.reply({
+        content: "Last page selection has been removed!",
+      });
+      console.log(pageId);
     }
   },
 };
