@@ -35,10 +35,16 @@ module.exports = {
     const pageIdArray = (response) => {
       const list = [];
       for (let i = 0; i < response.results.length; i++) {
+
+        const pageTitle =
+          response.results[i].properties.Name.title[0].text.content;
+        const pageUrl = response.results[i].url
+        const pageId = response.results[i].id
+        
         list.push({
-          label: response.results[i].properties.Name.title[0].text.content,
-          description: response.results[i].url,
-          value: response.results[i].id,
+          label: pageTitle,
+          description: pageUrl,
+          value: pageId,
         });
       }
       return list;
@@ -48,21 +54,11 @@ module.exports = {
       const databasePages = await query;
       console.log(databasePages)
 
-      const databasePageBuilder = databasePages.map((page) => {
-        new StringSelectMenuOptionBuilder()
-          .setLabel(page.label)
-          .setDescription(page.description)
-          .setValue(page.value)
-      });
-
       const row = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
-          // .addOptions(...databasePages)
-          .addOptions(
-            ...databasePageBuilder
-          )
+          .addOptions(...databasePages)
       );
 
       await interaction.reply({
