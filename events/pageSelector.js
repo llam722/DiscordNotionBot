@@ -10,9 +10,9 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isStringSelectMenu()) return;
     //assigns selected to the chosen value in menu
+    if (interaction.customId === "select") {
+      
     const selected = interaction.values[0];
-    //logging interaction to see if I can obtain name of values without making another request
-    // console.log('interaction', interaction)
 
     const query = (async () => {
       try {
@@ -26,13 +26,11 @@ module.exports = {
         console.log(pageName, 'pageName')
         return pageName;
       } catch (error) {
-        console.log(error, "page does not exist in database");
+        console.log(error, "could not query the page name properly");
       }
     })();
 
-
-
-    if (interaction.customId === "select") {
+    
       const pageName = await query;
       await interaction.update({
         content: `Page: ${pageName} selected successfully!`,
