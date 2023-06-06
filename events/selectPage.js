@@ -50,7 +50,13 @@ module.exports = {
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
-          .addOptions(...databasePages)
+          // .addOptions(...databasePages)
+          .addOptions(
+            new StringSelectMenuOptionBuilder()
+              .setLabel("Bulbasaur")
+              .setDescription("The dual-type Grass/Poison Seed Pokémon.")
+              .setValue("bulbasaur")
+          )
       );
 
       await interaction.reply({
