@@ -10,9 +10,9 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isStringSelectMenu()) return;
     //assigns selected to the chosen value in menu
-    if (interaction.customId === "select") {
-      
     const selected = interaction.values[0];
+
+    if (interaction.customId === "select") {
 
     const query = (async () => {
       try {
