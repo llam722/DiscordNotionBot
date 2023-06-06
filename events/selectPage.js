@@ -50,8 +50,10 @@ module.exports = {
         new StringSelectMenuBuilder()
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
+          // .addOptions(...databasePages)
           .addOptions(...databasePages)
       );
+
       await interaction.reply({
         content: "Select page in database to update!",
         components: [row],
