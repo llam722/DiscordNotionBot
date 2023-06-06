@@ -4,8 +4,7 @@ const {pageId} = require('../tempPageId')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("removeselection")
-    .setDescription("Removes previously selected page"),
+    .setDescription("Removes all selected pages"),
   async execute(interaction) {
-    pageId.pop();
   },
 };
