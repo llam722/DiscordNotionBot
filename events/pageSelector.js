@@ -32,7 +32,7 @@ module.exports = {
 
       const pageName = await query;
       await interaction.update({
-        content: `Page: ${pageName} selected successfully!`,
+        content: `Page: (${pageName}) selected successfully!`,
         components: [],
       });
     }
