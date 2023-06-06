@@ -10,7 +10,7 @@ module.exports = {
 
     if (interaction.customId === "select") {
       await interaction.update({
-        content: "Page selected successfully!",
+        content: `Page: ${selected} selected successfully!`,
         components: [],
       });
     }
