@@ -34,7 +34,7 @@ module.exports = {
 
     if (interaction.customId === "select") {
       await interaction.update({
-        content: `Page: ${selected} selected successfully!`,
+        content: `Page: ${query} selected successfully!`,
         components: [],
       });
     }
