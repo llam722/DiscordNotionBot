@@ -2,6 +2,7 @@ const {
   ActionRowBuilder,
   Events,
   StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder
 } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require('../config.json')
@@ -45,6 +46,14 @@ module.exports = {
 
     if (interaction.commandName === "selectpage") {
       const databasePages = await query;
+      console.log(databasePages)
+
+      const databasePageBuilder = databasePages.map((page) => {
+        new StringSelectMenuOptionBuilder()
+          .setLabel(page.label)
+          .setDescription(page.description)
+          .setValue(page.value)
+      });
 
       const row = new ActionRowBuilder().addComponents(
         new StringSelectMenuBuilder()
@@ -52,10 +61,7 @@ module.exports = {
           .setPlaceholder("Nothing selected")
           // .addOptions(...databasePages)
           .addOptions(
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Bulbasaur")
-              .setDescription("The dual-type Grass/Poison Seed Pokémon.")
-              .setValue("bulbasaur")
+            ...databasePageBuilder
           )
       );
 

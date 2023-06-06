@@ -8,7 +8,7 @@ module.exports = {
     //assigns selected to the chosen value in menu
     const selected = interaction.values[0];
     //logging interaction to see if I can obtain name of values without making another request
-    console.log('interaction', interaction)
+    // console.log('interaction', interaction)
 
     if (interaction.customId === "select") {
       await interaction.update({
