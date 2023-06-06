@@ -2,7 +2,6 @@ const {
   ActionRowBuilder,
   Events,
   StringSelectMenuBuilder,
-  StringSelectMenuOptionBuilder
 } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require('../config.json')
