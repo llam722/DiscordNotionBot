@@ -62,7 +62,7 @@ module.exports = {
           },
         ],
       });
-      console.log(response, "block content added to page!");
+      // console.log(response, "block content added to page!");
       pageId.shift();
       console.log(pageId);
     }
