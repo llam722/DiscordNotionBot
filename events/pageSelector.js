@@ -21,7 +21,7 @@ module.exports = {
           database_id: databaseId,
           property: "page",
         });
-        const data = response.filter((page) => selected === page.database_id)
+        const data = response.filter(id => id === selected)
         console.log(data, 'data')
         return data;
       } catch (error) {
