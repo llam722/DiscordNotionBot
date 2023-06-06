@@ -11,7 +11,7 @@ module.exports = {
       await interaction.reply({
         content: "Last page selection has been removed!",
       });
-      console.log(pageId);
+      // console.log(pageId);
     }
   },
 };
