@@ -2,6 +2,7 @@ const {
   ActionRowBuilder,
   Events,
   StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
 } = require("discord.js");
 const { Client } = require("@notionhq/client");
 const { NOTION_KEY, NOTION_DATABASE_ID } = require('../config.json')
@@ -51,7 +52,14 @@ module.exports = {
           .setCustomId("select")
           .setPlaceholder("Nothing selected")
           // .addOptions(...databasePages)
-          .addOptions(...databasePages)
+          .addOptions(
+            databasePages.map((page) => {
+              new StringSelectMenuOptionBuilder()
+                .setLabel(page.label)
+                .setDescription(page.description)
+                .setValue(page.value)
+            })
+          )
       );
 
       await interaction.reply({
