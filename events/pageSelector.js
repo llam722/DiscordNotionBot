@@ -12,8 +12,6 @@ module.exports = {
     //assigns selected to the chosen value in menu
     const selected = interaction.values[0];
 
-    if (interaction.customId === "select") {
-
     const query = (async () => {
       try {
         const databaseId = NOTION_DATABASE_ID;
@@ -30,7 +28,8 @@ module.exports = {
       }
     })();
 
-    
+    if (interaction.customId === "select") {
+
       const pageName = await query;
       await interaction.update({
         content: `Page: ${pageName} selected successfully!`,
