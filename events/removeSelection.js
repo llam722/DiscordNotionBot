@@ -6,7 +6,7 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === "selectpage") {
+    if (interaction.commandName === "removeselection") {
       pageId.pop();
       await interaction.reply({
         content: "Last page selection has been removed!",
