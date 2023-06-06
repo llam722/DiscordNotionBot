@@ -33,8 +33,9 @@ module.exports = {
 
 
     if (interaction.customId === "select") {
+      const pageName = await query;
       await interaction.update({
-        content: `Page: ${query} selected successfully!`,
+        content: `Page: ${pageName} selected successfully!`,
         components: [],
       });
     }
